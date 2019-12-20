@@ -12,8 +12,6 @@
 		4003352623AD1AF700ED2BCB /* refresh_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4003352223AD1AF100ED2BCB /* refresh_arrow@2x.png */; };
 		4003352723AD1AF700ED2BCB /* refresh_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4003352323AD1AF100ED2BCB /* refresh_arrow@3x.png */; };
 		9702BC8D1E7A8F1800705296 /* NormalHeaderAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9702BC891E7A8F1800705296 /* NormalHeaderAnimator.swift */; };
-		9753C6691E76A12A00CCBBA0 /* SlackLoadingAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9753C65B1E76A12A00CCBBA0 /* SlackLoadingAnimator.swift */; };
-		9753C66A1E76A12A00CCBBA0 /* WCLLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9753C65C1E76A12A00CCBBA0 /* WCLLoadingView.swift */; };
 		9753C66B1E76A12A00CCBBA0 /* CRRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9753C65D1E76A12A00CCBBA0 /* CRRefreshAnimator.swift */; };
 		9753C66D1E76A12A00CCBBA0 /* CRRefreshComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9753C65F1E76A12A00CCBBA0 /* CRRefreshComponent.swift */; };
 		9753C66E1E76A12A00CCBBA0 /* CRRefreshExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9753C6601E76A12A00CCBBA0 /* CRRefreshExtension.swift */; };
@@ -54,8 +52,6 @@
 		9702BC891E7A8F1800705296 /* NormalHeaderAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalHeaderAnimator.swift; sourceTree = "<group>"; };
 		9753C6461E76A0D200CCBBA0 /* CRRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CRRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9753C64A1E76A0D200CCBBA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9753C65B1E76A12A00CCBBA0 /* SlackLoadingAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlackLoadingAnimator.swift; sourceTree = "<group>"; };
-		9753C65C1E76A12A00CCBBA0 /* WCLLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCLLoadingView.swift; sourceTree = "<group>"; };
 		9753C65D1E76A12A00CCBBA0 /* CRRefreshAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRRefreshAnimator.swift; sourceTree = "<group>"; };
 		9753C65F1E76A12A00CCBBA0 /* CRRefreshComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRRefreshComponent.swift; sourceTree = "<group>"; };
 		9753C6601E76A12A00CCBBA0 /* CRRefreshExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRRefreshExtension.swift; sourceTree = "<group>"; };
@@ -141,7 +137,6 @@
 			isa = PBXGroup;
 			children = (
 				9753C6531E76A12A00CCBBA0 /* NormalAnimator */,
-				9753C65A1E76A12A00CCBBA0 /* SlackLoadingAnimator */,
 			);
 			path = Animators;
 			sourceTree = "<group>";
@@ -154,15 +149,6 @@
 				4003352323AD1AF100ED2BCB /* refresh_arrow@3x.png */,
 			);
 			path = NormalAnimator;
-			sourceTree = "<group>";
-		};
-		9753C65A1E76A12A00CCBBA0 /* SlackLoadingAnimator */ = {
-			isa = PBXGroup;
-			children = (
-				9753C65B1E76A12A00CCBBA0 /* SlackLoadingAnimator.swift */,
-				9753C65C1E76A12A00CCBBA0 /* WCLLoadingView.swift */,
-			);
-			path = SlackLoadingAnimator;
 			sourceTree = "<group>";
 		};
 		9753C6781E76A13C00CCBBA0 /* Demo */ = {
@@ -316,12 +302,10 @@
 			files = (
 				9753C66B1E76A12A00CCBBA0 /* CRRefreshAnimator.swift in Sources */,
 				9702BC8D1E7A8F1800705296 /* NormalHeaderAnimator.swift in Sources */,
-				9753C6691E76A12A00CCBBA0 /* SlackLoadingAnimator.swift in Sources */,
 				97884D03200DD20A0017692A /* UIColorExtension.swift in Sources */,
 				9753C66E1E76A12A00CCBBA0 /* CRRefreshExtension.swift in Sources */,
 				9753C66D1E76A12A00CCBBA0 /* CRRefreshComponent.swift in Sources */,
 				9753C6701E76A12A00CCBBA0 /* CRRefreshHeaderView.swift in Sources */,
-				9753C66A1E76A12A00CCBBA0 /* WCLLoadingView.swift in Sources */,
 				9753C6711E76A12A00CCBBA0 /* CRRefreshProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

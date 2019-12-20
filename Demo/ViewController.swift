@@ -18,7 +18,7 @@ class ViewController: BaseViewController {
     
     var refreshs: [Refresh] = [
         Refresh(model: .init(icon: #imageLiteral(resourceName: "Image_1"), title: "NormalAnimator", subTitle: "普通刷新控件"), header: .normalHead),
-        Refresh(model: .init(icon: #imageLiteral(resourceName: "Image_2"), title: "SlackLoadingAnimator", subTitle: "SlackLoading的刷新控件"), header: .slackLoading),
+        Refresh(model: .init(icon: #imageLiteral(resourceName: "Image_2"), title: "2NormalAnimator2", subTitle: "2Animator的刷新控件"), header: .normalHead),
         Refresh(model: .init(icon: #imageLiteral(resourceName: "Image_3"), title: "3NormalAnimator3", subTitle: "3Animator的刷新控件"), header: .normalHead),
         Refresh(model: .init(icon: #imageLiteral(resourceName: "Image_1"), title: "4NormalAnimator4", subTitle: "4Animator的刷新控件4"), header: .normalHead)
     ]
@@ -89,17 +89,13 @@ struct Refresh {
     }
     
     enum Style {
-        // 普通刷新类
-        case normalHead
-        // slackLoading刷新控件
-        case slackLoading
+ 
+        case normalHead 
         
         func commont() -> CRRefreshProtocol {
             switch self {
             case .normalHead:
-                return NormalHeaderAnimator()
-            case .slackLoading:
-                return SlackLoadingAnimator()
+                return NormalHeaderAnimator() 
             }
         }
     }
