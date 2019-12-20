@@ -26,19 +26,17 @@
 import UIKit
 
 open class NormalHeaderAnimator: UIView, CRRefreshProtocol {
-    
-    static let crBundle = CRRefreshBundle.bundle(name: "NormalHeader", for: NormalHeaderAnimator.self)
-    
-    open var pullToRefreshDescription = crBundle?.localizedString(key: "CRRefreshHeaderIdleText") {
+     
+    open var pullToRefreshDescription = "Pull down to refresh" {
         didSet {
             if pullToRefreshDescription != oldValue {
                 titleLabel.text = pullToRefreshDescription;
             }
         }
     }
-    open var releaseToRefreshDescription = crBundle?.localizedString(key: "CRRefreshHeaderPullingText")
-    open var loadingDescription = crBundle?.localizedString(key: "CRRefreshHeaderRefreshingText")
-
+    open var releaseToRefreshDescription = "Release to refresh"
+    open var loadingDescription = "Loading..."
+    
     open var view: UIView { return self }
     open var insets: UIEdgeInsets = .zero
     open var trigger: CGFloat  = 60.0
@@ -48,7 +46,7 @@ open class NormalHeaderAnimator: UIView, CRRefreshProtocol {
 
     fileprivate let imageView: UIImageView = {
         let imageView = UIImageView.init()
-        imageView.image = crBundle?.imageFromBundle("refresh_arrow")
+        imageView.image = UIImage(named: "refresh_arrow")
         return imageView
     }()
     

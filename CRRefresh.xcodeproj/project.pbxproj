@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9702BC8A1E7A8F1800705296 /* NormalFooter.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9702BC861E7A8F1800705296 /* NormalFooter.bundle */; };
+		4003352423AD1AF700ED2BCB /* refresh_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4003352223AD1AF100ED2BCB /* refresh_arrow@2x.png */; };
+		4003352523AD1AF700ED2BCB /* refresh_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4003352323AD1AF100ED2BCB /* refresh_arrow@3x.png */; };
+		4003352623AD1AF700ED2BCB /* refresh_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4003352223AD1AF100ED2BCB /* refresh_arrow@2x.png */; };
+		4003352723AD1AF700ED2BCB /* refresh_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4003352323AD1AF100ED2BCB /* refresh_arrow@3x.png */; };
 		9702BC8B1E7A8F1800705296 /* NormalFooterAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9702BC871E7A8F1800705296 /* NormalFooterAnimator.swift */; };
-		9702BC8C1E7A8F1800705296 /* NormalHeader.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9702BC881E7A8F1800705296 /* NormalHeader.bundle */; };
 		9702BC8D1E7A8F1800705296 /* NormalHeaderAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9702BC891E7A8F1800705296 /* NormalHeaderAnimator.swift */; };
 		9717BBAA1EB1C01E00AD6864 /* FastCheckLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9717BBA91EB1C01E00AD6864 /* FastCheckLayer.swift */; };
 		974647E31E8A4F93003A3019 /* FastAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974647E01E8A4F93003A3019 /* FastAnimator.swift */; };
@@ -59,9 +61,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9702BC861E7A8F1800705296 /* NormalFooter.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NormalFooter.bundle; sourceTree = "<group>"; };
+		4003352223AD1AF100ED2BCB /* refresh_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh_arrow@2x.png"; sourceTree = "<group>"; };
+		4003352323AD1AF100ED2BCB /* refresh_arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh_arrow@3x.png"; sourceTree = "<group>"; };
 		9702BC871E7A8F1800705296 /* NormalFooterAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalFooterAnimator.swift; sourceTree = "<group>"; };
-		9702BC881E7A8F1800705296 /* NormalHeader.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NormalHeader.bundle; sourceTree = "<group>"; };
 		9702BC891E7A8F1800705296 /* NormalHeaderAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalHeaderAnimator.swift; sourceTree = "<group>"; };
 		9717BBA91EB1C01E00AD6864 /* FastCheckLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastCheckLayer.swift; sourceTree = "<group>"; };
 		974647E01E8A4F93003A3019 /* FastAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastAnimator.swift; sourceTree = "<group>"; };
@@ -187,10 +189,10 @@
 		9753C6531E76A12A00CCBBA0 /* NormalAnimator */ = {
 			isa = PBXGroup;
 			children = (
-				9702BC861E7A8F1800705296 /* NormalFooter.bundle */,
 				9702BC871E7A8F1800705296 /* NormalFooterAnimator.swift */,
-				9702BC881E7A8F1800705296 /* NormalHeader.bundle */,
 				9702BC891E7A8F1800705296 /* NormalHeaderAnimator.swift */,
+				4003352223AD1AF100ED2BCB /* refresh_arrow@2x.png */,
+				4003352323AD1AF100ED2BCB /* refresh_arrow@3x.png */,
 			);
 			path = NormalAnimator;
 			sourceTree = "<group>";
@@ -298,25 +300,26 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "王崇磊";
 				TargetAttributes = {
 					9753C6451E76A0D200CCBBA0 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = LV28398KV6;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 					};
 					9753C6761E76A13C00CCBBA0 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 464B6RYLBK;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = 9753C6401E76A0D200CCBBA0 /* Build configuration list for PBXProject "CRRefresh" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -338,8 +341,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9702BC8A1E7A8F1800705296 /* NormalFooter.bundle in Resources */,
-				9702BC8C1E7A8F1800705296 /* NormalHeader.bundle in Resources */,
+				4003352423AD1AF700ED2BCB /* refresh_arrow@2x.png in Resources */,
+				4003352523AD1AF700ED2BCB /* refresh_arrow@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +354,8 @@
 				9753C6951E76A1D500CCBBA0 /* NormalCell.xib in Resources */,
 				9753C6811E76A13C00CCBBA0 /* Assets.xcassets in Resources */,
 				9753C6971E76A1D500CCBBA0 /* RefreshCell.xib in Resources */,
+				4003352623AD1AF700ED2BCB /* refresh_arrow@2x.png in Resources */,
+				4003352723AD1AF700ED2BCB /* refresh_arrow@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +422,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -478,6 +484,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -544,7 +551,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = WCL.CRRefresh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -564,7 +571,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = WCL.CRRefresh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -577,7 +584,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "WCL.CRRefresh-.Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -590,7 +597,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "WCL.CRRefresh-.Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

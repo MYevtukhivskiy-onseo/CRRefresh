@@ -26,12 +26,10 @@
 import UIKit
 
 open class NormalFooterAnimator: UIView, CRRefreshProtocol {
-    
-    static let crBundle = CRRefreshBundle.bundle(name: "NormalFooter", for: NormalFooterAnimator.self)
-
-    open var loadingMoreDescription = crBundle?.localizedString(key: "CRRefreshFooterIdleText")
-    open var noMoreDataDescription  = crBundle?.localizedString(key: "CRRefreshFooterNoMoreText")
-    open var loadingDescription     = crBundle?.localizedString(key: "CRRefreshFooterRefreshingText")
+     
+    open var loadingMoreDescription = "Loading more"
+    open var noMoreDataDescription  = "No more data"
+    open var loadingDescription     = "Loading..."
 
     open var view: UIView { return self }
     open var duration: TimeInterval = 0.3

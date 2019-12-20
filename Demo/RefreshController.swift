@@ -72,7 +72,7 @@ class RefreshController: BaseViewController {
             })
         }
         
-        tableView.cr.beginHeaderRefresh()
+//        tableView.cr.beginHeaderRefresh()
         
         tableView.cr.addFootRefresh(animator: refresh.footer.commont()) { [weak self] in
             print("开始加载")
