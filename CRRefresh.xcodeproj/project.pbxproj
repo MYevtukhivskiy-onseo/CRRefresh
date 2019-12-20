@@ -21,7 +21,6 @@
 		9753C6691E76A12A00CCBBA0 /* SlackLoadingAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9753C65B1E76A12A00CCBBA0 /* SlackLoadingAnimator.swift */; };
 		9753C66A1E76A12A00CCBBA0 /* WCLLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9753C65C1E76A12A00CCBBA0 /* WCLLoadingView.swift */; };
 		9753C66B1E76A12A00CCBBA0 /* CRRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9753C65D1E76A12A00CCBBA0 /* CRRefreshAnimator.swift */; };
-		9753C66C1E76A12A00CCBBA0 /* CRRefreshBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9753C65E1E76A12A00CCBBA0 /* CRRefreshBundle.swift */; };
 		9753C66D1E76A12A00CCBBA0 /* CRRefreshComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9753C65F1E76A12A00CCBBA0 /* CRRefreshComponent.swift */; };
 		9753C66E1E76A12A00CCBBA0 /* CRRefreshExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9753C6601E76A12A00CCBBA0 /* CRRefreshExtension.swift */; };
 		9753C66F1E76A12A00CCBBA0 /* CRRefreshFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9753C6611E76A12A00CCBBA0 /* CRRefreshFooterView.swift */; };
@@ -75,7 +74,6 @@
 		9753C65B1E76A12A00CCBBA0 /* SlackLoadingAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlackLoadingAnimator.swift; sourceTree = "<group>"; };
 		9753C65C1E76A12A00CCBBA0 /* WCLLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCLLoadingView.swift; sourceTree = "<group>"; };
 		9753C65D1E76A12A00CCBBA0 /* CRRefreshAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRRefreshAnimator.swift; sourceTree = "<group>"; };
-		9753C65E1E76A12A00CCBBA0 /* CRRefreshBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRRefreshBundle.swift; sourceTree = "<group>"; };
 		9753C65F1E76A12A00CCBBA0 /* CRRefreshComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRRefreshComponent.swift; sourceTree = "<group>"; };
 		9753C6601E76A12A00CCBBA0 /* CRRefreshExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRRefreshExtension.swift; sourceTree = "<group>"; };
 		9753C6611E76A12A00CCBBA0 /* CRRefreshFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRRefreshFooterView.swift; sourceTree = "<group>"; };
@@ -164,7 +162,6 @@
 			children = (
 				9753C6521E76A12A00CCBBA0 /* Animators */,
 				9753C65D1E76A12A00CCBBA0 /* CRRefreshAnimator.swift */,
-				9753C65E1E76A12A00CCBBA0 /* CRRefreshBundle.swift */,
 				9753C65F1E76A12A00CCBBA0 /* CRRefreshComponent.swift */,
 				9753C6601E76A12A00CCBBA0 /* CRRefreshExtension.swift */,
 				9753C6611E76A12A00CCBBA0 /* CRRefreshFooterView.swift */,
@@ -366,7 +363,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9753C66C1E76A12A00CCBBA0 /* CRRefreshBundle.swift in Sources */,
 				974647E51E8A4F93003A3019 /* FastCircleLayer.swift in Sources */,
 				9753C66B1E76A12A00CCBBA0 /* CRRefreshAnimator.swift in Sources */,
 				9702BC8D1E7A8F1800705296 /* NormalHeaderAnimator.swift in Sources */,
