@@ -49,6 +49,7 @@ class RefreshController: BaseViewController {
     //MARK: Public Methods
     override func configNavBar() {
         super.configNavBar()
+        
         addNavDefaultBackButton()
         navTitle = refresh.model.title
     }

@@ -23,37 +23,37 @@ import UIKit
 
 private var kCRRefreshHeaderKey = "kCRRefreshHeaderKey" 
 
-public typealias CRRefreshView = UIScrollView
+ typealias CRRefreshView = UIScrollView
 
 extension CRRefreshView {
     
-    public var cr: CRRefreshDSL {
+     var cr: CRRefreshDSL {
         return CRRefreshDSL(scroll: self)
     }
 }
 
-public struct CRRefreshDSL: CRRefreshViewProtocol {
+ struct CRRefreshDSL: CRRefreshViewProtocol {
     
-    public var scroll: CRRefreshView
+     var scroll: CRRefreshView
     
     internal init(scroll: CRRefreshView) {
         self.scroll = scroll
     }
     /// 添加上拉刷新控件
     @discardableResult
-    public func addHeadRefresh(animator: CRRefreshProtocol = NormalHeaderAnimator(), handler: @escaping CRRefreshHandler) -> CRRefreshHeaderView {
+     func addHeadRefresh(animator: CRRefreshProtocol = NormalHeaderAnimator(), handler: @escaping CRRefreshHandler) -> CRRefreshHeaderView {
         return CRRefreshMake.addHeadRefreshTo(refresh: scroll, animator: animator, handler: handler)
     }
     
-    public func beginHeaderRefresh() {
+     func beginHeaderRefresh() {
         header?.beginRefreshing()
     }
     
-    public func endHeaderRefresh() {
+     func endHeaderRefresh() {
         header?.endRefreshing()
     }
     
-    public func removeHeader() {
+     func removeHeader() {
         var headRefresh = CRRefreshMake(scroll: scroll)
         headRefresh.removeHeader()
     }
@@ -61,9 +61,9 @@ public struct CRRefreshDSL: CRRefreshViewProtocol {
 }
 
 
-public struct CRRefreshMake: CRRefreshViewProtocol {
+ struct CRRefreshMake: CRRefreshViewProtocol {
     
-    public var scroll: CRRefreshView
+     var scroll: CRRefreshView
     
     internal init(scroll: CRRefreshView) {
         self.scroll = scroll
@@ -82,7 +82,7 @@ public struct CRRefreshMake: CRRefreshViewProtocol {
         return header
     }
     
-    public mutating func removeHeader() {
+     mutating func removeHeader() {
         header?.endRefreshing()
         header?.removeFromSuperview()
         header = nil
@@ -90,7 +90,7 @@ public struct CRRefreshMake: CRRefreshViewProtocol {
      
 }
 
-public protocol CRRefreshViewProtocol {
+ protocol CRRefreshViewProtocol {
     var scroll: CRRefreshView {set get}
     /// 头部控件
     var header: CRRefreshHeaderView? {set get}
@@ -98,7 +98,7 @@ public protocol CRRefreshViewProtocol {
 
 extension CRRefreshViewProtocol {
     
-    public var header: CRRefreshHeaderView? {
+     var header: CRRefreshHeaderView? {
         get {
             return (objc_getAssociatedObject(scroll, &kCRRefreshHeaderKey) as? CRRefreshHeaderView)
         }

@@ -21,9 +21,9 @@
 
 import UIKit
 
-open class NormalHeaderAnimator: UIView, CRRefreshProtocol {
-     
-    open var pullToRefreshDescription = "Pull down to refresh" {
+class NormalHeaderAnimator: UIView, CRRefreshProtocol {
+    
+    var pullToRefreshDescription = "Pull down to refresh" {
         didSet {
             if pullToRefreshDescription != oldValue {
                 titleLabel.text = pullToRefreshDescription
@@ -31,16 +31,16 @@ open class NormalHeaderAnimator: UIView, CRRefreshProtocol {
         }
     }
     
-    open var releaseToRefreshDescription = "Release to refresh"
-    open var loadingDescription = "Loading..."
+    var releaseToRefreshDescription = "Release to refresh"
+    var loadingDescription = "Loading..."
     
-    open var view: UIView { return self }
-    open var insets: UIEdgeInsets = .zero
-    open var trigger: CGFloat  = 60.0
-    open var execute: CGFloat  = 60.0
-    open var endDelay: CGFloat = 0
-    public var hold: CGFloat   = 60
-
+    var view: UIView { return self }
+    var insets: UIEdgeInsets = .zero
+    var trigger: CGFloat  = 60.0
+    var execute: CGFloat  = 60.0
+    var endDelay: CGFloat = 0
+     var hold: CGFloat   = 60
+    
     fileprivate let imageView: UIImageView = {
         let imageView = UIImageView.init()
         imageView.image = UIImage(named: "refresh_arrow")
@@ -61,7 +61,7 @@ open class NormalHeaderAnimator: UIView, CRRefreshProtocol {
         return indicatorView
     }()
     
-    public override init(frame: CGRect) {
+     override init(frame: CGRect) {
         super.init(frame: frame)
         titleLabel.text = pullToRefreshDescription
         self.addSubview(imageView)
@@ -69,39 +69,56 @@ open class NormalHeaderAnimator: UIView, CRRefreshProtocol {
         self.addSubview(indicatorView)
     }
     
-    public required init(coder aDecoder: NSCoder) {
+     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let size = bounds.size
+        let width = size.width
+        let height = size.height
+        
+        UIView.performWithoutAnimation {
+            titleLabel.sizeToFit()
+            titleLabel.center = .init(x: width / 2.0, y: height / 2.0)
+            indicatorView.center = .init(x: titleLabel.frame.origin.x - 16.0, y: height / 2.0)
+            imageView.frame = CGRect.init(x: titleLabel.frame.origin.x - 28.0, y: (height - 18.0) / 2.0, width: 18.0, height: 18.0)
+        }
+    }
     
-    open func refreshBegin(view: CRRefreshComponent) {
+    
+    func refreshBegin(view: CRRefreshComponent) {
         indicatorView.startAnimating()
         indicatorView.isHidden = false
         imageView.isHidden     = true
         titleLabel.text        = loadingDescription
         imageView.transform    = CGAffineTransform(rotationAngle: 0.000001 - CGFloat(Double.pi))
     }
-  
-    open func refreshEnd(view: CRRefreshComponent, finish: Bool) {
+    
+    func refreshEnd(view: CRRefreshComponent, finish: Bool) {
+        
         if finish {
             indicatorView.stopAnimating()
             indicatorView.isHidden = true
             imageView.isHidden = false
             imageView.transform = CGAffineTransform.identity
-        }else {
+        } else {
             titleLabel.text = pullToRefreshDescription
             setNeedsLayout()
         }
     }
     
-    public func refreshWillEnd(view: CRRefreshComponent) {
+     func refreshWillEnd(view: CRRefreshComponent) {
         
     }
     
-    open func refresh(view: CRRefreshComponent, progressDidChange progress: CGFloat) {
+    func refresh(view: CRRefreshComponent, progressDidChange progress: CGFloat) {
         
     }
     
-    open func refresh(view: CRRefreshComponent, stateDidChange state: CRRefreshState) {
+    func refresh(view: CRRefreshComponent, stateDidChange state: CRRefreshState) {
         
         switch state {
             
@@ -129,20 +146,6 @@ open class NormalHeaderAnimator: UIView, CRRefreshProtocol {
             break
         default:
             break
-        }
-    }
-
-    open override func layoutSubviews() {
-        super.layoutSubviews()
-        let s = bounds.size
-        let w = s.width
-        let h = s.height
-        
-        UIView.performWithoutAnimation {
-            titleLabel.sizeToFit()
-            titleLabel.center = .init(x: w / 2.0, y: h / 2.0)
-            indicatorView.center = .init(x: titleLabel.frame.origin.x - 16.0, y: h / 2.0)
-            imageView.frame = CGRect.init(x: titleLabel.frame.origin.x - 28.0, y: (h - 18.0) / 2.0, width: 18.0, height: 18.0)
         }
     }
     

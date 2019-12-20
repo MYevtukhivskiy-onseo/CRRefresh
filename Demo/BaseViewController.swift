@@ -39,8 +39,8 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         return .lightContent
     }
     
-    var navTitle: String?{
-        didSet{
+    var navTitle: String? {
+        didSet {
             let titleLabel = UILabel.init(frame: CGRect.zero)
             titleLabel.font = UIFont.appMediumFontOfSize(18)
             titleLabel.textColor = UIColor.white
@@ -50,10 +50,8 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    //MARK: Public Methods    
-    /**
-     配置NavBar
-     */
+    // 配置NavBar
+  
     func configNavBar() {
         setNavImage(bgColor: APP_NAV_BG_COLOR, shadowColor: APP_NAV_LINE_COLOR)
     }
@@ -204,7 +202,7 @@ func getSystemVersion() -> Double {
     return Double(systemVersion) ?? 0
 }
 
-public extension UIColor {
+extension UIColor {
     convenience init(rgb: (r: CGFloat, g: CGFloat, b: CGFloat)) {
         self.init(red: rgb.r/255, green: rgb.g/255, blue: rgb.b/255, alpha: 1.0)
     }

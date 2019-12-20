@@ -30,7 +30,6 @@ class NormalCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
 
-    //MARK: Public Methods
     func config(_ model: Refresh.Model) {
         iconView.image = model.icon
         titleLabel.text = model.title

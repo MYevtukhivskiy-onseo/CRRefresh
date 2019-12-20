@@ -21,24 +21,24 @@
 
 import UIKit
 
-public protocol CRRefreshProtocol {
+protocol CRRefreshProtocol {
     /// 自定义的view
-    var view: UIView {get}
+    var view: UIView { get }
     
     /// view的insets
-    var insets: UIEdgeInsets {set get}
+    var insets: UIEdgeInsets { set get }
     
     /// 触发刷新的高度
-    var trigger: CGFloat {set get}
+    var trigger: CGFloat { set get }
     
     /// 动画执行时的高度
-    var execute: CGFloat {set get}
+    var execute: CGFloat { set get }
     
     /// 动画结束时延迟的时间，单位秒
-    var endDelay: CGFloat {set get}
+    var endDelay: CGFloat { set get }
     
     /// 延迟时悬停的高度
-    var hold: CGFloat {set get}
+    var hold: CGFloat { set get }
     
     /// 开始刷新
     mutating func refreshBegin(view: CRRefreshComponent)

@@ -21,7 +21,7 @@
 
 import UIKit
 
-open class CRRefreshHeaderView: CRRefreshComponent {
+ class CRRefreshHeaderView: CRRefreshComponent {
     
     /// 记录之前的offsetY
     fileprivate var previousOffsetY: CGFloat = 0.0
@@ -33,13 +33,13 @@ open class CRRefreshHeaderView: CRRefreshComponent {
     /// 是否还在结束中
     private var isEnding: Bool = false
     
-    public convenience init(animator: CRRefreshProtocol = NormalHeaderAnimator(), handler: @escaping CRRefreshHandler) {
+    convenience init(animator: CRRefreshProtocol = NormalHeaderAnimator(), handler: @escaping CRRefreshHandler) {
         self.init(frame: .zero)
         self.handler  = handler
         self.animator = animator
     }
     
-    open override func didMoveToSuperview() {
+     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         
         DispatchQueue.main.async { [weak self] in
@@ -49,7 +49,7 @@ open class CRRefreshHeaderView: CRRefreshComponent {
         }
     }
     
-    open override func start() {
+     override func start() {
         
         guard let scrollView = scrollView else { return }
         // 动画的时候先忽略监听
@@ -81,7 +81,7 @@ open class CRRefreshHeaderView: CRRefreshComponent {
         }
     }
     
-    open override func stop() {
+     override func stop() {
         guard let scrollView = scrollView else { return }
         // 动画的时候先忽略监听
         ignoreObserver(true)
@@ -123,12 +123,17 @@ open class CRRefreshHeaderView: CRRefreshComponent {
         }
     }
 
-    open override func offsetChange(change: [NSKeyValueChangeKey : Any]?) {
+     override func offsetChange(change: [NSKeyValueChangeKey: Any]?) {
+        
         guard let scrollView = scrollView else { return }
+        
         super.offsetChange(change: change)
+        
         // sectionheader停留的解决方案
         guard isRefreshing == false else {
-            if self.window == nil {return}
+            
+            if self.window == nil { return }
+            
             let top          = scrollViewInsets.top
             let offsetY      = scrollView.contentOffset.y
             let height       = frame.size.height
@@ -136,11 +141,13 @@ open class CRRefreshHeaderView: CRRefreshComponent {
             scrollingTop     = (scrollingTop > height + top) ? (height + top) : scrollingTop
             scrollView.contentInset.top = scrollingTop
             insetTDelta      = scrollViewInsets.top - scrollingTop
+            
             return
         }
         
         // 算出Progress
         var isRecordingProgress = false
+        
         defer {
             if isRecordingProgress == true {
                 let percent = -(previousOffsetY + scrollViewInsets.top) / animator.trigger
@@ -149,7 +156,9 @@ open class CRRefreshHeaderView: CRRefreshComponent {
         }
         
         let offsets = previousOffsetY + scrollViewInsets.top
+        
         if offsets < -animator.trigger {
+            
             if isRefreshing == false {
                 if scrollView.isDragging == false, state == .pulling {
                     beginRefreshing()
@@ -161,12 +170,14 @@ open class CRRefreshHeaderView: CRRefreshComponent {
                     }
                 }
             }
+            
         } else if offsets < 0 {
             if isRefreshing == false {
                 state = .idle
                 isRecordingProgress = true
             }
         }
+        
         previousOffsetY = scrollView.contentOffset.y
     }
 }

@@ -21,32 +21,32 @@
 
 import UIKit
 
-open class CRRefreshAnimator: CRRefreshProtocol {
+class CRRefreshAnimator: CRRefreshProtocol {
     
-    open var view: UIView
+    var view: UIView
     
-    open var insets: UIEdgeInsets
+    var insets: UIEdgeInsets
     
-    open var trigger: CGFloat = 60.0
+    var trigger: CGFloat = 60.0
     
-    open var execute: CGFloat = 60.0
+    var execute: CGFloat = 60.0
     
-    open var endDelay: CGFloat = 0
+    var endDelay: CGFloat = 0
     
-    public var hold: CGFloat   = 60
+    var hold: CGFloat   = 60
     
-    public init() {
+    init() {
         view = UIView()
         insets = UIEdgeInsets.zero
     }
     
-    open func refreshBegin(view: CRRefreshComponent) {}
+    func refreshBegin(view: CRRefreshComponent) {}
     
-    open func refreshWillEnd(view: CRRefreshComponent) {}
+    func refreshWillEnd(view: CRRefreshComponent) {}
     
-    open func refreshEnd(view: CRRefreshComponent, finish: Bool) {}
+    func refreshEnd(view: CRRefreshComponent, finish: Bool) {}
     
-    open func refresh(view: CRRefreshComponent, progressDidChange progress: CGFloat) {}
+    func refresh(view: CRRefreshComponent, progressDidChange progress: CGFloat) {}
     
-    open func refresh(view: CRRefreshComponent, stateDidChange state: CRRefreshState) {}
+    func refresh(view: CRRefreshComponent, stateDidChange state: CRRefreshState) {}
 }

@@ -32,13 +32,10 @@ class NavigationViewController: UINavigationController,
         return .lightContent
     }
     
-    //MARK: Public Methods
-    
-    
     //MARK: Override
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         navigationBar.isTranslucent = false
         delegate = self
     }

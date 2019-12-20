@@ -11,6 +11,12 @@
 		4003352523AD1AF700ED2BCB /* refresh_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4003352323AD1AF100ED2BCB /* refresh_arrow@3x.png */; };
 		4003352623AD1AF700ED2BCB /* refresh_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4003352223AD1AF100ED2BCB /* refresh_arrow@2x.png */; };
 		4003352723AD1AF700ED2BCB /* refresh_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4003352323AD1AF100ED2BCB /* refresh_arrow@3x.png */; };
+		4003352923AD26CC00ED2BCB /* NormalHeaderAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9702BC891E7A8F1800705296 /* NormalHeaderAnimator.swift */; };
+		4003352A23AD26CC00ED2BCB /* CRRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9753C65D1E76A12A00CCBBA0 /* CRRefreshAnimator.swift */; };
+		4003352B23AD26CC00ED2BCB /* CRRefreshProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9753C6631E76A12A00CCBBA0 /* CRRefreshProtocol.swift */; };
+		4003352C23AD26CC00ED2BCB /* CRRefreshComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9753C65F1E76A12A00CCBBA0 /* CRRefreshComponent.swift */; };
+		4003352D23AD26CC00ED2BCB /* CRRefreshExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9753C6601E76A12A00CCBBA0 /* CRRefreshExtension.swift */; };
+		4003352E23AD26CC00ED2BCB /* CRRefreshHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9753C6621E76A12A00CCBBA0 /* CRRefreshHeaderView.swift */; };
 		9702BC8D1E7A8F1800705296 /* NormalHeaderAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9702BC891E7A8F1800705296 /* NormalHeaderAnimator.swift */; };
 		9753C66B1E76A12A00CCBBA0 /* CRRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9753C65D1E76A12A00CCBBA0 /* CRRefreshAnimator.swift */; };
 		9753C66D1E76A12A00CCBBA0 /* CRRefreshComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9753C65F1E76A12A00CCBBA0 /* CRRefreshComponent.swift */; };
@@ -306,12 +312,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4003352A23AD26CC00ED2BCB /* CRRefreshAnimator.swift in Sources */,
 				9753C6941E76A1D500CCBBA0 /* NormalCell.swift in Sources */,
 				9753C67C1E76A13C00CCBBA0 /* ViewController.swift in Sources */,
+				4003352923AD26CC00ED2BCB /* NormalHeaderAnimator.swift in Sources */,
+				4003352D23AD26CC00ED2BCB /* CRRefreshExtension.swift in Sources */,
 				9753C68D1E76A16D00CCBBA0 /* NavigationController.swift in Sources */,
 				9753C68E1E76A16D00CCBBA0 /* RefreshController.swift in Sources */,
+				4003352E23AD26CC00ED2BCB /* CRRefreshHeaderView.swift in Sources */,
 				9753C67A1E76A13C00CCBBA0 /* AppDelegate.swift in Sources */,
 				9753C68C1E76A16D00CCBBA0 /* BaseViewController.swift in Sources */,
+				4003352C23AD26CC00ED2BCB /* CRRefreshComponent.swift in Sources */,
+				4003352B23AD26CC00ED2BCB /* CRRefreshProtocol.swift in Sources */,
 				9753C6961E76A1D500CCBBA0 /* RefreshCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
