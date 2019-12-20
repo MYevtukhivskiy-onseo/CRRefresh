@@ -25,8 +25,7 @@
 
 import UIKit
 
-private var kCRRefreshHeaderKey = "kCRRefreshHeaderKey"
-private var kCRRefreshFooterKey = "kCRRefreshFooterKey"
+private var kCRRefreshHeaderKey = "kCRRefreshHeaderKey" 
 
 public typealias CRRefreshView = UIScrollView
 
@@ -61,30 +60,7 @@ public struct CRRefreshDSL: CRRefreshViewProtocol {
         var headRefresh = CRRefreshMake(scroll: scroll)
         headRefresh.removeHeader()
     }
-    
-    /// 添加下拉加载控件
-    @discardableResult
-    public func addFootRefresh(animator: CRRefreshProtocol = NormalFooterAnimator(), handler: @escaping CRRefreshHandler) -> CRRefreshFooterView {
-        return CRRefreshMake.addFootRefreshTo(refresh: scroll, animator: animator, handler: handler)
-    }
-    
-    public func noticeNoMoreData() {
-        footer?.endRefreshing()
-        footer?.noticeNoMoreData()
-    }
-    
-    public func resetNoMore() {
-        footer?.resetNoMoreData()
-    }
-    
-    public func endLoadingMore() {
-        footer?.endRefreshing()
-    }
-    
-    public func removeFooter() {
-        var footRefresh = CRRefreshMake(scroll: scroll)
-        footRefresh.removeFooter()
-    }
+     
 }
 
 
@@ -114,33 +90,13 @@ public struct CRRefreshMake: CRRefreshViewProtocol {
         header?.removeFromSuperview()
         header = nil
     }
-    
-    /// 添加下拉加载
-    @discardableResult
-    internal static func addFootRefreshTo(refresh: CRRefreshView, animator: CRRefreshProtocol = NormalFooterAnimator(), handler: @escaping CRRefreshHandler) -> CRRefreshFooterView {
-        var make = CRRefreshMake(scroll: refresh)
-        make.removeFooter()
-        let footer     = CRRefreshFooterView(animator: animator, handler: handler)
-        let footerH    = footer.animator.execute
-        footer.frame   = .init(x: 0, y: refresh.contentSize.height + refresh.contentInset.bottom, width: refresh.bounds.size.width, height: footerH)
-        refresh.addSubview(footer)
-        make.footer = footer
-        return footer
-    }
-    
-    public mutating func removeFooter() {
-        footer?.endRefreshing()
-        footer?.removeFromSuperview()
-        footer = nil
-    }
+     
 }
 
 public protocol CRRefreshViewProtocol {
     var scroll: CRRefreshView {set get}
     /// 头部控件
     var header: CRRefreshHeaderView? {set get}
-    /// 头部控件
-    var footer: CRRefreshFooterView? {set get}
 }
 
 extension CRRefreshViewProtocol {
@@ -153,13 +109,5 @@ extension CRRefreshViewProtocol {
             objc_setAssociatedObject(scroll, &kCRRefreshHeaderKey, newValue, .OBJC_ASSOCIATION_RETAIN)
         }
     }
-    
-    public var footer: CRRefreshFooterView? {
-        get {
-            return (objc_getAssociatedObject(scroll, &kCRRefreshFooterKey) as? CRRefreshFooterView)
-        }
-        set {
-            objc_setAssociatedObject(scroll, &kCRRefreshFooterKey, newValue, .OBJC_ASSOCIATION_RETAIN)
-        }
-    }
+     
 }

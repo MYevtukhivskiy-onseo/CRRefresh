@@ -66,22 +66,13 @@ class RefreshController: BaseViewController {
             print("开始刷新")
             DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
                 self?.count = 10
-                self?.tableView.cr.endHeaderRefresh()
-                self?.tableView.cr.resetNoMore()
+                self?.tableView.cr.endHeaderRefresh() 
                 self?.tableView.reloadData()
             })
         }
         
 //        tableView.cr.beginHeaderRefresh()
-        
-        tableView.cr.addFootRefresh(animator: refresh.footer.commont()) { [weak self] in
-            print("开始加载")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                self?.count += 10
-                self?.tableView.cr.noticeNoMoreData()
-                self?.tableView.reloadData()
-            })
-        }
+         
     }
     
     //MARK: Override
