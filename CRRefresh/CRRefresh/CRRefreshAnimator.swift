@@ -18,10 +18,6 @@
 //  Created by 王崇磊 on 16/9/14.
 //  Copyright © 2016年 王崇磊. All rights reserved.
 //
-// @class CRRefreshAnimator
-// @abstract 默认的Animator
-// @discussion 默认的Animator
-//
 
 import UIKit
 

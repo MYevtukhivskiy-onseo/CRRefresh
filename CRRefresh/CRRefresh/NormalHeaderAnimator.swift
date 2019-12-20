@@ -18,10 +18,6 @@
 //  Created by 王崇磊 on 16/9/14.
 //  Copyright © 2016年 王崇磊. All rights reserved.
 //
-// @class NormalFootAnimator
-// @abstract 普通顶部加载Animator
-// @discussion 普通顶部加载Animator
-//
 
 import UIKit
 
@@ -30,10 +26,11 @@ open class NormalHeaderAnimator: UIView, CRRefreshProtocol {
     open var pullToRefreshDescription = "Pull down to refresh" {
         didSet {
             if pullToRefreshDescription != oldValue {
-                titleLabel.text = pullToRefreshDescription;
+                titleLabel.text = pullToRefreshDescription
             }
         }
     }
+    
     open var releaseToRefreshDescription = "Release to refresh"
     open var loadingDescription = "Loading..."
     
@@ -105,19 +102,23 @@ open class NormalHeaderAnimator: UIView, CRRefreshProtocol {
     }
     
     open func refresh(view: CRRefreshComponent, stateDidChange state: CRRefreshState) {
+        
         switch state {
+            
         case .refreshing:
             titleLabel.text = loadingDescription
             setNeedsLayout()
             break
+            
         case .pulling:
             titleLabel.text = releaseToRefreshDescription
             self.setNeedsLayout()
-            UIView.animate(withDuration: 0.2, delay: 0.0, options: UIView.AnimationOptions(), animations: {
-                [weak self] in
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: UIView.AnimationOptions(), animations: { [weak self] in
                 self?.imageView.transform = CGAffineTransform(rotationAngle: 0.000001 - CGFloat(Double.pi))
             }) { (animated) in }
+            
             break
+            
         case .idle:
             titleLabel.text = pullToRefreshDescription
             self.setNeedsLayout()

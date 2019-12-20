@@ -18,10 +18,6 @@
 //  Created by 王崇磊 on 16/9/14.
 //  Copyright © 2016年 王崇磊. All rights reserved.
 //
-// @class CRRefreshProtocol
-// @abstract 自定义animator需要实现的接口
-// @discussion 自定义animator需要实现的接口
-//
 
 import UIKit
 

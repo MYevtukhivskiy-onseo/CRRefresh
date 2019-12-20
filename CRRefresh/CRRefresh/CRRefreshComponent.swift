@@ -18,10 +18,6 @@
 //  Created by 王崇磊 on 16/9/14.
 //  Copyright © 2016年 王崇磊. All rights reserved.
 //
-// @class CRRefreshComponent
-// @abstract 刷新控件的基类
-// @discussion 刷新控件的基类
-//
 
 import UIKit
 
@@ -36,8 +32,6 @@ public enum CRRefreshState {
     case refreshing
     /// 即将刷新的状态
     case willRefresh
-    /// 所有数据加载完毕，没有更多的数据了
-    case noMoreData
 }
 
 open class CRRefreshComponent: UIView {
@@ -83,8 +77,10 @@ open class CRRefreshComponent: UIView {
     
     open override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
+        
         // 旧的父控件移除监听
         removeObserver()
+        
         if let newSuperview = newSuperview as? UIScrollView {
             // 记录UIScrollView最开始的contentInset
             scrollViewInsets = newSuperview.contentInset

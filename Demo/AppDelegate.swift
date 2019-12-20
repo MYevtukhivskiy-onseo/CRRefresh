@@ -16,13 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
+        
         let VC = ViewController()
         let NAV = NavigationViewController(rootViewController: VC)
         window?.rootViewController = NAV
         
-        UITableView.appearance().estimatedSectionHeaderHeight = 0 
+//        UITableView.appearance().estimatedSectionHeaderHeight = 0 
 
         return true
     }

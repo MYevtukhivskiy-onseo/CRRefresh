@@ -62,7 +62,8 @@ class RefreshController: BaseViewController {
         tableView.dataSource = self
         tableView.separatorStyle = .none
         
-        tableView.cr.addHeadRefresh(animator: refresh.header.commont()) { [weak self] in
+        let animator = NormalHeaderAnimator()
+        tableView.cr.addHeadRefresh(animator: animator) { [weak self] in
             print("开始刷新")
             DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
                 self?.count = 10
@@ -79,18 +80,20 @@ class RefreshController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNormalMagnitude))
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+//        tableView.tableHeaderView?.frame.size.height = 0
     }
     
 }
 
 // MARK: - Table view data source
 extension RefreshController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -102,8 +105,16 @@ extension RefreshController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
     }
-    
+     
+    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
+    }
+     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
     }
     

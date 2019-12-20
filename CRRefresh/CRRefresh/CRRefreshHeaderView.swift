@@ -18,10 +18,6 @@
 //  Created by 王崇磊 on 16/9/14.
 //  Copyright © 2016年 王崇磊. All rights reserved.
 //
-// @class CRRefreshHeaderView
-// @abstract 刷新的头部控件
-// @discussion 刷新的头部控件
-//
 
 import UIKit
 
@@ -45,6 +41,7 @@ open class CRRefreshHeaderView: CRRefreshComponent {
     
     open override func didMoveToSuperview() {
         super.didMoveToSuperview()
+        
         DispatchQueue.main.async { [weak self] in
             guard let weakSelf = self else { return }
             weakSelf.scrollViewBounces = weakSelf.scrollView?.bounces ?? true
@@ -53,19 +50,24 @@ open class CRRefreshHeaderView: CRRefreshComponent {
     }
     
     open override func start() {
+        
         guard let scrollView = scrollView else { return }
         // 动画的时候先忽略监听
         ignoreObserver(true)
         scrollView.bounces = false
+        
         super.start()
+        
         // 开始动画
         animator.refreshBegin(view: self)
+        
         // 调整scrollView的contentInset
         var insets           = scrollView.contentInset
         scrollViewInsets.top = insets.top
         insets.top          += animator.execute
         insetTDelta          = -animator.execute
         holdInsetTDelta      = -(animator.execute - animator.hold)
+        
         UIView.animate(withDuration: CRRefreshComponent.animationDuration, animations: { 
             scrollView.contentOffset.y = self.previousOffsetY
             scrollView.contentInset    = insets

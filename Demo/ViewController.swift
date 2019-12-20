@@ -17,13 +17,9 @@ class ViewController: BaseViewController {
     }()
     
     var refreshs: [Refresh] = [
-        Refresh(model: .init(icon: #imageLiteral(resourceName: "Image_1"), title: "NormalAnimator", subTitle: "普通刷新控件"), header: .normalHead),
-        Refresh(model: .init(icon: #imageLiteral(resourceName: "Image_2"), title: "2NormalAnimator2", subTitle: "2Animator的刷新控件"), header: .normalHead),
-        Refresh(model: .init(icon: #imageLiteral(resourceName: "Image_3"), title: "3NormalAnimator3", subTitle: "3Animator的刷新控件"), header: .normalHead),
-        Refresh(model: .init(icon: #imageLiteral(resourceName: "Image_1"), title: "4NormalAnimator4", subTitle: "4Animator的刷新控件4"), header: .normalHead)
+        Refresh(model: .init(icon: #imageLiteral(resourceName: "Image_1"), title: "NormalAnimator", subTitle: "普通刷新控件"))
     ]
-
-
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -79,25 +75,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 struct Refresh {
+    
     var model: Model
-    var header: Style
     
     struct Model {
         var icon: UIImage
         var title: String
         var subTitle: String
     }
-    
-    enum Style {
- 
-        case normalHead 
-        
-        func commont() -> CRRefreshProtocol {
-            switch self {
-            case .normalHead:
-                return NormalHeaderAnimator() 
-            }
-        }
-    }
+     
 }
 

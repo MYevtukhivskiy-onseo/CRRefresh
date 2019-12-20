@@ -123,11 +123,14 @@
 			isa = PBXGroup;
 			children = (
 				9753C6521E76A12A00CCBBA0 /* Animators */,
+				9702BC891E7A8F1800705296 /* NormalHeaderAnimator.swift */,
+				4003352223AD1AF100ED2BCB /* refresh_arrow@2x.png */,
+				4003352323AD1AF100ED2BCB /* refresh_arrow@3x.png */,
 				9753C65D1E76A12A00CCBBA0 /* CRRefreshAnimator.swift */,
+				9753C6631E76A12A00CCBBA0 /* CRRefreshProtocol.swift */,
 				9753C65F1E76A12A00CCBBA0 /* CRRefreshComponent.swift */,
 				9753C6601E76A12A00CCBBA0 /* CRRefreshExtension.swift */,
 				9753C6621E76A12A00CCBBA0 /* CRRefreshHeaderView.swift */,
-				9753C6631E76A12A00CCBBA0 /* CRRefreshProtocol.swift */,
 				97884D02200DD20A0017692A /* UIColorExtension.swift */,
 			);
 			path = CRRefresh;
@@ -136,19 +139,8 @@
 		9753C6521E76A12A00CCBBA0 /* Animators */ = {
 			isa = PBXGroup;
 			children = (
-				9753C6531E76A12A00CCBBA0 /* NormalAnimator */,
 			);
 			path = Animators;
-			sourceTree = "<group>";
-		};
-		9753C6531E76A12A00CCBBA0 /* NormalAnimator */ = {
-			isa = PBXGroup;
-			children = (
-				9702BC891E7A8F1800705296 /* NormalHeaderAnimator.swift */,
-				4003352223AD1AF100ED2BCB /* refresh_arrow@2x.png */,
-				4003352323AD1AF100ED2BCB /* refresh_arrow@3x.png */,
-			);
-			path = NormalAnimator;
 			sourceTree = "<group>";
 		};
 		9753C6781E76A13C00CCBBA0 /* Demo */ = {

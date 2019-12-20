@@ -18,10 +18,6 @@
 //  Created by 王崇磊 on 16/9/14.
 //  Copyright © 2016年 王崇磊. All rights reserved.
 //
-// @class CRRefreshExtension
-// @abstract CRRefreshExtension
-// @discussion CRRefreshExtension
-//
 
 import UIKit
 
@@ -30,6 +26,7 @@ private var kCRRefreshHeaderKey = "kCRRefreshHeaderKey"
 public typealias CRRefreshView = UIScrollView
 
 extension CRRefreshView {
+    
     public var cr: CRRefreshDSL {
         return CRRefreshDSL(scroll: self)
     }
