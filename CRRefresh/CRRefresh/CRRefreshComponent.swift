@@ -21,30 +21,30 @@
 
 import UIKit
 
- typealias CRRefreshHandler = (() -> ())
+typealias CRRefreshHandler = (() -> ())
 
- enum CRRefreshState {
-    /// 普通闲置状态
+enum CRRefreshState {
+    /// Normal idle state
     case idle
-    /// 松开就可以进行刷新的状态
+    /// Release to refresh
     case pulling
-    /// 正在刷新中的状态
+    /// Refreshing status
     case refreshing
-    /// 即将刷新的状态
+    /// Upcoming status
     case willRefresh
 }
 
- class CRRefreshComponent: UIView {
+class CRRefreshComponent: UIView {
     
-     weak var scrollView: UIScrollView?
+    weak var scrollView: UIScrollView?
     
-     var scrollViewInsets: UIEdgeInsets = .zero
+    var scrollViewInsets: UIEdgeInsets = .zero
     
-     var handler: CRRefreshHandler?
+    var handler: CRRefreshHandler?
     
-     var animator: CRRefreshProtocol!
+    var animator: CRRefreshProtocol!
     
-     var state: CRRefreshState = .idle {
+    var state: CRRefreshState = .idle {
         didSet {
             if state != oldValue {
                 DispatchQueue.main.async {
@@ -54,54 +54,63 @@ import UIKit
         }
     }
     
-    fileprivate var isObservingScrollView = false
+    fileprivate var isObservingScrollView: Bool = false
+    fileprivate var isIgnoreObserving:     Bool = false
+    fileprivate(set) var isRefreshing:     Bool = false
     
-    fileprivate var isIgnoreObserving     = false
-    
-    fileprivate(set) var isRefreshing     = false
-    
-     override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
+        
         autoresizingMask = [.flexibleLeftMargin, .flexibleWidth, .flexibleRightMargin]
     }
     
-     convenience init(animator: CRRefreshProtocol = CRRefreshAnimator(), handler: @escaping CRRefreshHandler) {
+    convenience init(animator: CRRefreshProtocol = CRRefreshAnimator(), handler: @escaping CRRefreshHandler) {
         self.init(frame: .zero)
+        
         self.handler  = handler
         self.animator = animator
     }
     
-     required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-     override func willMove(toSuperview newSuperview: UIView?) {
+    override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
         
-        // 旧的父控件移除监听
+        // Remove the old parent control
         removeObserver()
         
         if let newSuperview = newSuperview as? UIScrollView {
-            // 记录UIScrollView最开始的contentInset
+            
+            // Save the initial contentInset of UIScrollView
             scrollViewInsets = newSuperview.contentInset
+            
             DispatchQueue.main.async { [weak self, newSuperview] in
+                
                 guard let weakSelf = self else { return }
+                
                 weakSelf.addObserver(newSuperview)
             }
         }
     }
     
-     override func didMoveToSuperview() {
+    override func didMoveToSuperview() {
         super.didMoveToSuperview()
+        
         scrollView = superview as? UIScrollView
+        
         let view = animator.view
+        
         if view.superview == nil {
             let inset = animator.insets
             addSubview(view)
+            
             view.frame = CGRect(x: inset.left,
                                 y: inset.top,
                                 width: bounds.size.width - inset.left - inset.right,
                                 height: bounds.size.height - inset.top - inset.bottom)
+            
             view.autoresizingMask = [
                 .flexibleWidth,
                 .flexibleTopMargin,
@@ -112,45 +121,52 @@ import UIKit
     }
     
     //MARK:  Methods
-     final func beginRefreshing() -> Void {
+    final func beginRefreshing() -> Void {
+        
         guard isRefreshing == false else { return }
+        
         if self.window != nil {
             state = .refreshing
             start()
-        }else {
+        } else {
             if state != .refreshing {
                 state = .willRefresh
-                // 预防view还没显示出来就调用了beginRefreshing
+                
+                // Prevent the view from calling beginRefreshing before it is displayed
                 DispatchQueue.main.async {
+                    
                     self.scrollViewInsets = self.scrollView?.contentInset ?? .zero
+                    
                     if self.state == .willRefresh {
                         self.state = .refreshing
                         self.start()
                     }
                 }
+                
             }
         }
+        
     }
     
-     final func endRefreshing() -> Void {
+    final func endRefreshing() -> Void {
         guard isRefreshing else { return }
         self.stop()
     }
     
-     func ignoreObserver(_ ignore: Bool = false) {
+    func ignoreObserver(_ ignore: Bool = false) {
         isIgnoreObserving = ignore
     }
     
-     func start() {
+    func start() {
         isRefreshing = true
     }
     
-     func stop() {
+    func stop() {
         isRefreshing = false
     }
     
-     func sizeChange(change: [NSKeyValueChangeKey: Any]?) {}
-     func offsetChange(change: [NSKeyValueChangeKey: Any]?) {}
+    func sizeChange(change: [NSKeyValueChangeKey: Any]?) {}
+    func offsetChange(change: [NSKeyValueChangeKey: Any]?) {}
 }
 
 //MARK: Observer Methods 
@@ -159,7 +175,8 @@ extension CRRefreshComponent {
     fileprivate static var context            = "CRRefreshContext"
     fileprivate static let offsetKeyPath      = "contentOffset"
     fileprivate static let contentSizeKeyPath = "contentSize"
-     static let animationDuration       = 0.25
+    
+    static let animationDuration = 0.25
     
     fileprivate func removeObserver() {
         
@@ -181,13 +198,11 @@ extension CRRefreshComponent {
         }
     }
     
-     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
         
         if context == &CRRefreshComponent.context {
             
-            guard isUserInteractionEnabled == true && isHidden == false else {
-                return
-            }
+            guard isUserInteractionEnabled, !isHidden else { return }
             
             if keyPath == CRRefreshComponent.contentSizeKeyPath {
                 

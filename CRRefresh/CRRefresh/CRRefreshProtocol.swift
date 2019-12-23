@@ -22,36 +22,37 @@
 import UIKit
 
 protocol CRRefreshProtocol {
-    /// 自定义的view
+    
+    /// Custom view
     var view: UIView { get }
     
-    /// view的insets
+    /// View insets
     var insets: UIEdgeInsets { set get }
     
-    /// 触发刷新的高度
+    /// The height at which the refresh is triggered
     var trigger: CGFloat { set get }
     
-    /// 动画执行时的高度
+    /// Height when the animation is executed
     var execute: CGFloat { set get }
     
-    /// 动画结束时延迟的时间，单位秒
+    /// Delay time at the end of the animation, in seconds
     var endDelay: CGFloat { set get }
     
-    /// 延迟时悬停的高度
+    /// Hover height when delayed
     var hold: CGFloat { set get }
     
-    /// 开始刷新
+    /// Start refreshing
     mutating func refreshBegin(view: CRRefreshComponent)
     
-    /// 将要开始刷新
+    /// Will end refresh
     mutating func refreshWillEnd(view: CRRefreshComponent)
     
-    /// 结束刷新
+    /// End refresh
     mutating func refreshEnd(view: CRRefreshComponent, finish: Bool)
     
-    /// 刷新进度的变化
+    /// Refresh progress changes
     mutating func refresh(view: CRRefreshComponent, progressDidChange progress: CGFloat)
     
-    /// 刷新状态的变化
+    /// Change of refresh status
     mutating func refresh(view: CRRefreshComponent, stateDidChange state: CRRefreshState)
 }

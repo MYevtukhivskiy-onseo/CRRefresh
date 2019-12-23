@@ -21,16 +21,19 @@
 
 import UIKit
 
- class CRRefreshHeaderView: CRRefreshComponent {
+class CRRefreshHeaderView: CRRefreshComponent {
     
-    /// 记录之前的offsetY
+    /// OffsetY before recording
     fileprivate var previousOffsetY: CGFloat = 0.0
     fileprivate var scrollViewBounces: Bool  = true
-    /// 记录结束刷新时需要调整的contentInsetY
+    
+    /// ContentInsetY that needs to be adjusted when the record is refreshed
     fileprivate var insetTDelta: CGFloat     = 0.0
-    /// 记录悬停时需要调整的contentInsetY
+    
+    /// Record contentInsetY that needs to be adjusted when hovering
     fileprivate var holdInsetTDelta: CGFloat = 0.0
-    /// 是否还在结束中
+    
+    /// Is it still over
     private var isEnding: Bool = false
     
     convenience init(animator: CRRefreshProtocol = NormalHeaderAnimator(), handler: @escaping CRRefreshHandler) {
@@ -39,29 +42,29 @@ import UIKit
         self.animator = animator
     }
     
-     override func didMoveToSuperview() {
+    override func didMoveToSuperview() {
         super.didMoveToSuperview()
         
         DispatchQueue.main.async { [weak self] in
             guard let weakSelf = self else { return }
             weakSelf.scrollViewBounces = weakSelf.scrollView?.bounces ?? true
-
         }
     }
     
-     override func start() {
+    override func start() {
         
         guard let scrollView = scrollView else { return }
-        // 动画的时候先忽略监听
+        
+        // Ignore listening when animating
         ignoreObserver(true)
         scrollView.bounces = false
         
         super.start()
         
-        // 开始动画
+        // Start animation
         animator.refreshBegin(view: self)
         
-        // 调整scrollView的contentInset
+        // Adjust scrollView's contentInset
         var insets           = scrollView.contentInset
         scrollViewInsets.top = insets.top
         insets.top          += animator.execute
@@ -81,24 +84,29 @@ import UIKit
         }
     }
     
-     override func stop() {
+    override func stop() {
+        
         guard let scrollView = scrollView else { return }
-        // 动画的时候先忽略监听
+        
+        // Ignore listening when animating
         ignoreObserver(true)
         animator.refreshWillEnd(view: self)
+        
         if self.animator.hold != 0 {
             UIView.animate(withDuration: CRRefreshComponent.animationDuration) {
                 scrollView.contentInset.top += self.holdInsetTDelta
             }
         }
         func beginStop() {
-            guard isEnding == false, isRefreshing else {
-                return
-            }
+            
+            guard isEnding == false, isRefreshing else { return }
+            
             isEnding = true
-            // 结束动画
+            
+            // End animation
             animator.refreshEnd(view: self, finish: false)
-            // 调整scrollView的contentInset
+            
+            // Adjust scrollView's contentInset
             UIView.animate(withDuration: CRRefreshComponent.animationDuration, animations: {
                 scrollView.contentInset.top += self.insetTDelta - self.holdInsetTDelta
             }) { (finished) in
@@ -111,9 +119,13 @@ import UIKit
                 }
             }
         }
+        
         if animator.endDelay > 0 {
+            
             if self.isEnding == false {
+                
                 let delay =  DispatchTimeInterval.milliseconds(Int(animator.endDelay * 1000))
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
                     beginStop()
                 })
@@ -122,14 +134,14 @@ import UIKit
             beginStop()
         }
     }
-
-     override func offsetChange(change: [NSKeyValueChangeKey: Any]?) {
+    
+    override func offsetChange(change: [NSKeyValueChangeKey: Any]?) {
         
         guard let scrollView = scrollView else { return }
         
         super.offsetChange(change: change)
         
-        // sectionheader停留的解决方案
+        // SectionHeader staying solution
         guard isRefreshing == false else {
             
             if self.window == nil { return }
@@ -137,6 +149,7 @@ import UIKit
             let top          = scrollViewInsets.top
             let offsetY      = scrollView.contentOffset.y
             let height       = frame.size.height
+            
             var scrollingTop = (-offsetY > top) ? -offsetY : top
             scrollingTop     = (scrollingTop > height + top) ? (height + top) : scrollingTop
             scrollView.contentInset.top = scrollingTop
@@ -145,7 +158,7 @@ import UIKit
             return
         }
         
-        // 算出Progress
+        // Calculation Progress
         var isRecordingProgress = false
         
         defer {

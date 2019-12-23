@@ -28,11 +28,8 @@ class CRRefreshAnimator: CRRefreshProtocol {
     var insets: UIEdgeInsets
     
     var trigger: CGFloat = 60.0
-    
     var execute: CGFloat = 60.0
-    
     var endDelay: CGFloat = 0
-    
     var hold: CGFloat   = 60
     
     init() {
@@ -41,12 +38,8 @@ class CRRefreshAnimator: CRRefreshProtocol {
     }
     
     func refreshBegin(view: CRRefreshComponent) {}
-    
     func refreshWillEnd(view: CRRefreshComponent) {}
-    
     func refreshEnd(view: CRRefreshComponent, finish: Bool) {}
-    
     func refresh(view: CRRefreshComponent, progressDidChange progress: CGFloat) {}
-    
     func refresh(view: CRRefreshComponent, stateDidChange state: CRRefreshState) {}
 }

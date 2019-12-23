@@ -35,11 +35,14 @@ class NormalHeaderAnimator: UIView, CRRefreshProtocol {
     var loadingDescription = "Loading..."
     
     var view: UIView { return self }
-    var insets: UIEdgeInsets = .zero
-    var trigger: CGFloat  = 60.0
-    var execute: CGFloat  = 60.0
-    var endDelay: CGFloat = 0
-     var hold: CGFloat   = 60
+    
+    var insets:   UIEdgeInsets = .zero
+    var trigger:  CGFloat  = 60.0
+    var execute:  CGFloat  = 60.0
+    var endDelay: CGFloat  = 0
+    var hold:     CGFloat  = 60
+    
+    private let animationDuration: TimeInterval = 0.2
     
     fileprivate let imageView: UIImageView = {
         let imageView = UIImageView.init()
@@ -61,18 +64,20 @@ class NormalHeaderAnimator: UIView, CRRefreshProtocol {
         return indicatorView
     }()
     
-     override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
+        
         titleLabel.text = pullToRefreshDescription
+        
         self.addSubview(imageView)
         self.addSubview(titleLabel)
         self.addSubview(indicatorView)
     }
     
-     required init(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-     
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -88,13 +93,14 @@ class NormalHeaderAnimator: UIView, CRRefreshProtocol {
         }
     }
     
-    
     func refreshBegin(view: CRRefreshComponent) {
+        
         indicatorView.startAnimating()
         indicatorView.isHidden = false
+        
         imageView.isHidden     = true
         titleLabel.text        = loadingDescription
-        imageView.transform    = CGAffineTransform(rotationAngle: 0.000001 - CGFloat(Double.pi))
+        imageView.transform    = CGAffineTransform(rotationAngle: CGFloat.leastNonzeroMagnitude - CGFloat(Double.pi))
     }
     
     func refreshEnd(view: CRRefreshComponent, finish: Bool) {
@@ -110,7 +116,7 @@ class NormalHeaderAnimator: UIView, CRRefreshProtocol {
         }
     }
     
-     func refreshWillEnd(view: CRRefreshComponent) {
+    func refreshWillEnd(view: CRRefreshComponent) {
         
     }
     
@@ -130,20 +136,23 @@ class NormalHeaderAnimator: UIView, CRRefreshProtocol {
         case .pulling:
             titleLabel.text = releaseToRefreshDescription
             self.setNeedsLayout()
-            UIView.animate(withDuration: 0.2, delay: 0.0, options: UIView.AnimationOptions(), animations: { [weak self] in
-                self?.imageView.transform = CGAffineTransform(rotationAngle: 0.000001 - CGFloat(Double.pi))
-            }) { (animated) in }
+            
+            UIView.animate(withDuration: animationDuration, delay: 0.0, options: UIView.AnimationOptions(), animations: { [weak self] in
+                self?.imageView.transform = CGAffineTransform(rotationAngle: CGFloat.leastNonzeroMagnitude - CGFloat(Double.pi))
+            })
             
             break
             
         case .idle:
             titleLabel.text = pullToRefreshDescription
             self.setNeedsLayout()
-            UIView.animate(withDuration: 0.2, delay: 0.0, options: UIView.AnimationOptions(), animations: {
-                [weak self] in
+            
+            UIView.animate(withDuration: animationDuration, delay: 0.0, options: UIView.AnimationOptions(), animations: { [weak self] in
                 self?.imageView.transform = CGAffineTransform.identity
-            }) { (animated) in }
+            })
+            
             break
+            
         default:
             break
         }
